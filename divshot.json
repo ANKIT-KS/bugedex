@@ -1,0 +1,8 @@
+{
+  "name": "ait",
+  "root": "ait",
+  "clean_urls": true,
+  "error_page": "path",
+  "cache_control": {},
+  "routes": {}
+}
