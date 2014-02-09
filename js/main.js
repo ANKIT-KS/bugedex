@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ["firebase"]);
 
-app.controller("myController", ["$scope", "FirebaseService", function ($scope, firebaseService) {
+app.controller("myController", ["$scope", "FirebaseService", "GithubService", function ($scope, firebaseService, githubService) {
 
 	$scope.login = function ()	{
 		loginQuery();
@@ -12,29 +12,24 @@ app.controller("myController", ["$scope", "FirebaseService", function ($scope, f
 		loginPromise.then(function() {
 			updateView();
 		});
-	}
+	};
 
 	var updateView = function() {
 		$scope.user = firebaseService.user;
 		$scope.thirdPartyUserData = firebaseService.thirdPartyUserData;
 		$scope.error = firebaseService.error;
+
+		githubService.initGithub();
 	};
 
 	$scope.logout = function ()	{
 		firebaseService.logout();
-		$scope.user = false;
+		$scope.user = null;
 	};
 
-	$scope.saveData = function(user)	{
-
-		var userRef = new Firebase("https://bugodex.firebaseio.com/users/" + user.id);
-
-		userRef.set({
-			"username": user.username,
-			"name": user.displayName,
-		});
+	$scope.saveData = function()	{
+		firebaseService.saveData();
 	};
 
 	loginQuery();
-
 }]);

@@ -1,4 +1,4 @@
-Bugodex
+Bugedex
 ===
 
 Issue tracking revisited.
