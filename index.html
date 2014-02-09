@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html ng-app="myApp">
+
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Whoa! Mail</title>
+
+		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+		<script type='text/javascript'
+        		src='https://cdn.firebase.com/js/simple-login/1.2.5/firebase-simple-login.js'></script>
+
+		<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css"	/>
+		<link rel="stylesheet" type="text/css" href="css/app.css"	/>
+	</head>
+
+	<body ng-controller="myController">
+
+		<div class="container">
+
+			<div class="jumbotron">
+				<h2>
+					Bugodex
+				</h2>
+				<a href="" ng-click="login()" ng-show="!user" class="btn btn-success">Login</a>
+				<a href="" ng-click="logout()" ng-show="user" class="btn btn-danger">Logout</a>
+				<p ng-show="errorMessage">{{errorMessage}}</p>
+			</div>
+
+			<div ng-show="user">
+
+				<h3>{{user.displayName}}</h3>
+				<h5>Github Username: {{user.username}}</h5>
+				<h5>Github User ID: {{user.id}}</h5>
+				<a href="" ng-click="saveData(user)" class="btn btn-primary">Save to Firebase</a>
+
+				<br />
+
+				<h5>Third Party User Data: </h5>
+
+				<table class="table table-hover">
+					<tr>
+						<th>Key</th>
+						<th>Value</th>
+					</tr>
+					<tr ng-repeat="dataPoint in thirdPartyUserData">
+						<td>{{dataPoint.key}}</td>
+						<td>{{dataPoint.value}}</td>
+					</tr>
+				</table>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+
+</html>
