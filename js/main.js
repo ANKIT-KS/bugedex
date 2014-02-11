@@ -11,6 +11,7 @@ app.controller("myController", ["$scope", "FirebaseService", "GithubService", fu
 
 		loginPromise.then(function() {
 			updateView();
+			getIssues();
 		});
 	};
 
@@ -18,8 +19,6 @@ app.controller("myController", ["$scope", "FirebaseService", "GithubService", fu
 		$scope.user = firebaseService.user;
 		$scope.thirdPartyUserData = firebaseService.thirdPartyUserData;
 		$scope.error = firebaseService.error;
-
-		githubService.initGithub();
 	};
 
 	$scope.logout = function ()	{
@@ -29,6 +28,15 @@ app.controller("myController", ["$scope", "FirebaseService", "GithubService", fu
 
 	$scope.saveData = function()	{
 		firebaseService.saveData();
+	};
+
+	var getIssues = function()	{
+		var githubQueryPromise = githubService.getIssues();
+
+		githubQueryPromise.then(function()	{
+			$scope.issueList = githubService.issueList;
+			$scope.hasIssues = githubService.hasIssues;
+		});
 	};
 
 	loginQuery();
