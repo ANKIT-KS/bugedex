@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html ng-app="myApp">
+<html ng-app="bugedex">
 
 
 	<head>
@@ -8,15 +8,16 @@
 		<title>Bugedex</title>
 
 		<!-- Vendor Javascript Libraries -->
-		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script src="js/vendor/angular.min.js"></script>
+		<script src="js/vendor/angular-route.min.js"></script>
 		<script src="js/vendor/firebase/firebase.js"></script>
 		<script src="js/vendor/firebase/angularfire.min.js"></script>
 		<script src="js/vendor/firebase/firebase-simple-login.js"></script>
 
 		<!-- Vendor CSS Libraries -->
-		<link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.min.css"	/>
-		<link rel="stylesheet" type="text/css" href="css/vendor/flat-ui.css">
-		<link rel="stylesheet" type="text/css" href="css/app.css"	/>
+		<link rel="stylesheet" href="css/vendor/bootstrap.min.css"	/>
+		<link rel="stylesheet" href="css/vendor/flat-ui.css">
+		<link rel="stylesheet" href="css/app.css"	/>
 
 		<link rel="shortcut icon" href="images/favicon.ico">
 
@@ -28,30 +29,29 @@
 	</head>
 
 
-
-	<body ng-controller="myController">
+	<body ng-controller="indexController">
 
 		<div class="container">
 
 			<div class="row">
-				<h2 class="span10">
-					Bugodex
-				</h2>
-				<a href="" ng-click="login()" ng-show="!user" class="span2 btn btn-success">Login</a>
-				<a href="" ng-click="logout()" ng-show="user" class="span2 btn btn-danger">Logout</a>
+				<h3 class="col-sm-10">
+					Bugedex
+				</h3>
+				<a href="" ng-click="login()" ng-show="!user" class="col-sm-2 btn btn-success">Login</a>
+				<a href="" ng-click="logout()" ng-show="user" class="col-sm-2 btn btn-danger">Logout</a>
 				<p ng-show="errorMessage">{{errorMessage}}</p>
 			</div>
 
 			<div ng-show="user">
 
-				<h3>{{user.displayName}}</h3>
-				<h5>Github Username: {{user.username}}</h5>
-				<h5>Github User ID: {{user.id}}</h5>
-				<h5>Access Token: {{user.accessToken}}</h5>
+				<h5>{{user.displayName}}</h5><br />
+				<h7>Github Username: {{user.username}}</h7><br />
+				<h7>Github User ID: {{user.id}}</h7><br />
+				<h7>Access Token: {{user.accessToken}}</h7><br />
 				<a href="" ng-click="saveData(user)" class="btn btn-primary">Save to Firebase</a>
 
 				<div ng-show="hasIssues">
-					<h3>Github issues:</h3>
+					<h5>Github issues:</h5>
 					<p ng-repeat="issue in issueList">{{$index+1}}. ===== Title: "{{issue.title}}" ===== ID: {{issue.id}} ===== URL: {{issue.url}}</p>
 				</div>
 
@@ -60,9 +60,11 @@
 		</div>
 
 
-
 		<!-- AngularJS files, controllers and services -->
-		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+
+		<script type="text/javascript" src="js/index_controller.js"></script>
+
 		<script type="text/javascript" src="js/firebase_service.js"></script>
 		<script type="text/javascript" src="js/github_service.js"></script>
 
