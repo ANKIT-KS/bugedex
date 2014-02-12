@@ -29,41 +29,14 @@
 	</head>
 
 
-	<body ng-controller="indexController">
+	<body>
 
-		<div class="container">
-
-			<div class="row">
-				<h3 class="col-sm-10">
-					Bugedex
-				</h3>
-				<a href="" ng-click="login()" ng-show="!user" class="col-sm-2 btn btn-success">Login</a>
-				<a href="" ng-click="logout()" ng-show="user" class="col-sm-2 btn btn-danger">Logout</a>
-				<p ng-show="errorMessage">{{errorMessage}}</p>
-			</div>
-
-			<div ng-show="user">
-
-				<h5>{{user.displayName}}</h5><br />
-				<h7>Github Username: {{user.username}}</h7><br />
-				<h7>Github User ID: {{user.id}}</h7><br />
-				<h7>Access Token: {{user.accessToken}}</h7><br />
-				<a href="" ng-click="saveData(user)" class="btn btn-primary">Save to Firebase</a>
-
-				<div ng-show="hasIssues">
-					<h5>Github issues:</h5>
-					<p ng-repeat="issue in issueList">{{$index+1}}. ===== Title: "{{issue.title}}" ===== ID: {{issue.id}} ===== URL: {{issue.url}}</p>
-				</div>
-
-			</div>
-
-		</div>
-
+		<div ng-view></div>
 
 		<!-- AngularJS files, controllers and services -->
 		<script type="text/javascript" src="js/app.js"></script>
 
-		<script type="text/javascript" src="js/index_controller.js"></script>
+		<script type="text/javascript" src="js/home_controller.js"></script>
 
 		<script type="text/javascript" src="js/firebase_service.js"></script>
 		<script type="text/javascript" src="js/github_service.js"></script>

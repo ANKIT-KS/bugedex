@@ -1,0 +1,43 @@
+<div class="container">
+
+	<div class="row-fluid">
+		<h3 class="span10">
+			Bugedex
+		</h3>
+		<a href="" ng-click="login()" ng-show="!user" class="span2 btn btn-success">Login</a>
+		<a href="" ng-click="logout()" ng-show="user" class="span2 btn btn-danger">Logout</a>
+		<p ng-show="errorMessage">{{errorMessage}}</p>
+	</div>
+
+	<div ng-show="user">
+
+		<h5>{{user.displayName}}</h5><br />
+		<h7>Github Username: {{user.username}}</h7><br />
+		<h7>Github User ID: {{user.id}}</h7><br />
+		<h7>Access Token: {{user.accessToken}}</h7><br />
+		<a href="" ng-click="saveData(user)" class="btn btn-primary">Save to Firebase</a>
+
+		<div ng-show="hasIssues">
+
+			<h5>Github issues:</h5>
+
+			<table class="table table-hover">
+				<tr>
+					<th>#</th>
+					<th>Title</th>
+					<th>Issue ID</th>
+					<th>URL</th>
+				</tr>
+				<tr ng-repeat="issue in issueList">
+					<td>{{$index+1}}</td>
+					<td>{{issue.title}}</td>
+					<td>{{issue.id}}</td>
+					<td>{{issue.url}}</td>
+				</tr>
+			</table>
+
+		</div>
+
+	</div>
+
+</div>

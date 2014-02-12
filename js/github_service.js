@@ -1,4 +1,4 @@
-appServices.service("GithubService", ["$http", "$q", "FirebaseService",
+appServices.service('GithubService', ['$http', '$q', 'FirebaseService',
 
 	function ($http, $q, firebaseService) {
 

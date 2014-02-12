@@ -1,4 +1,4 @@
-appControllers.controller("indexController", ["$scope", "FirebaseService", "GithubService",
+appControllers.controller('homeController', ['$scope', 'FirebaseService', 'GithubService',
 
 	function ($scope, firebaseService, githubService) {
 

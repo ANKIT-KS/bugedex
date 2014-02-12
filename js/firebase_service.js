@@ -1,4 +1,4 @@
-appServices.service("FirebaseService", ["$firebase", "$q",
+appServices.service('FirebaseService', ['$firebase', '$q',
 
 	function ($firebase, $q) {
 
@@ -11,7 +11,7 @@ appServices.service("FirebaseService", ["$firebase", "$q",
 		*	Although I've changed the name on my firebase, the URL remains the same
 		*	NOTE TO SELF: Abstract this URL into a 'settings' service
 		*/
-		var dataRef = new Firebase("https://bugodex.firebaseio.com/");
+		var dataRef = new Firebase('https://bugodex.firebaseio.com/');
 		var auth = null;
 
 
@@ -49,11 +49,11 @@ appServices.service("FirebaseService", ["$firebase", "$q",
 
 
 		_that.saveData = function (user) {
-			var userRef = new Firebase("https://bugodex.firebaseio.com/users/" + user.id);
+			var userRef = new Firebase('https://bugodex.firebaseio.com/users/' + user.id);
 
 			userRef.set({
-				"username": _that.user.username,
-				"name": _that.user.displayName,
+				'username': _that.user.username,
+				'name': _that.user.displayName,
 			});
 
 		};
